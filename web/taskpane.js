@@ -1,9 +1,13 @@
 /* global Office, Word */
 const TILE_TEMPLATES = [
-  { id:"TextTile", label:"Pole tekstowe", sample:"{{ FIELD_NAME }}" },
-  { id:"ConditionTile", label:"Blok warunkowy", sample:"{{ START_is_visible }}\n<treść>\n{{ END_is_visible }}" },
-  { id:"ProductTable", label:"Tabela produktów (znacznik)", sample:"{{ INSERT_PRODUCT_TABLE }}" }
+  { id:"TextTile",      type:"TEXT",      label:"Pole tekstowe",
+    sample:"{{ FIELD_NAME }}" },
+  { id:"ConditionTile", type:"CONDITION", label:"Blok warunkowy",
+    sample:"{{ START_is_visible }}\n<treść>\n{{ END_is_visible }}" },
+  { id:"ProductTable",  type:"TABLE",     label:"Tabela produktów (znacznik)",
+    sample:"{{ INSERT_PRODUCT_TABLE }}" }
 ];
+
 
 Office.onReady(() => {
   renderTiles();

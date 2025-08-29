@@ -35,7 +35,8 @@
 
   <Permissions>ReadWriteDocument</Permissions>
 
-  <VersionOverrides xsi:type="ov:VersionOverridesV1_0">
+  <!-- 🔧 WAŻNE: prefiks 'ov:' przy VersionOverrides -->
+  <ov:VersionOverrides xsi:type="ov:VersionOverridesV1_0">
     <ov:Hosts>
       <ov:Host xsi:type="ov:Document">
         <ov:DesktopFormFactor>
@@ -67,7 +68,7 @@
             </ov:Tabs>
           </ov:ExtensionPoint>
 
-          <!-- Skrót klawiaturowy (zmień na CTRL+ALT+I, jeśli walidator marudzi) -->
+          <!-- Skrót klawiaturowy; jeśli validator marudzi na EQUALS, użyj CTRL+ALT+I -->
           <ov:ExtensionPoint xsi:type="KeyboardShortcuts">
             <ov:Shortcut id="AddNap.Tiles.ShortcutInsert"
                          key="CTRL+ALT+EQUALS"
@@ -90,5 +91,5 @@
         <ov:String id="Group.Label" DefaultValue="Kafle"/>
       </ov:ShortStrings>
     </ov:Resources>
-  </VersionOverrides>
+  </ov:VersionOverrides>
 </OfficeApp>

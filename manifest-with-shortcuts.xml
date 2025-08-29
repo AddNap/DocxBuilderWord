@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+           xsi:type="TaskPaneApp">
+  <Id>7b9e5d2d-2d3c-4a8c-9f0a-2db9a9e0a002</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>AddNap</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Word Tiles Add-in"/>
+  <Description DefaultValue="Tiles with Jinja-style placeholders"/>
+  <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-80.png"/>
+  <SupportUrl DefaultValue="https://localhost:3000/support"/>
+  <AppDomains>
+    <AppDomain>https://localhost:3000</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Document"/>
+  </Hosts>
+  <Requirements>
+    <Sets DefaultMinVersion="1.1">
+      <Set Name="WordApi" MinVersion="1.3"/>
+    </Sets>
+  </Requirements>
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://localhost:3000/taskpane.html"/>
+  </DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+  <VersionOverrides xsi:type="ov:VersionOverridesV1_0">
+    <ov:Hosts>
+      <ov:Host xsi:type="ov:Document">
+        <ov:DesktopFormFactor>
+          <ov:FunctionFile resid="Functions.Url"/>
+          <ov:ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <ov:Tabs>
+              <ov:Tab id="AddNap.Tiles.Tab" label="Tiles">
+                <ov:Group id="AddNap.Tiles.Group" label="Kafle" icon="Icon.16x16">
+                  <ov:Control xsi:type="Button" id="AddNap.Tiles.ShowPane"
+                              label="Otwórz panel" 
+                              tooltip="Pokaż panel kafli"
+                              icon="Icon.16x16">
+                    <ov:Action xsi:type="ShowTaskpane">
+                      <ov:SourceLocation resid="TaskPane.Url"/>
+                    </ov:Action>
+                  </ov:Control>
+                  <ov:Control xsi:type="Button" id="AddNap.Tiles.Insert"
+                              label="Wstaw kafel"
+                              tooltip="Wstaw wybrany kafel w kursor"
+                              icon="Icon.16x16">
+                    <ov:Action xsi:type="ExecuteFunction">
+                      <ov:FunctionName>insertTileAtSelection</ov:FunctionName>
+                    </ov:Action>
+                  </ov:Control>
+                </ov:Group>
+              </ov:Tab>
+            </ov:Tabs>
+          </ov:ExtensionPoint>
+          <ov:ExtensionPoint xsi:type="KeyboardShortcuts">
+            <ov:Shortcut id="AddNap.Tiles.ShortcutInsert" key="CTRL+ALT+EQUALS" action="AddNap.Tiles.Insert"/>
+          </ov:ExtensionPoint>
+        </ov:DesktopFormFactor>
+      </ov:Host>
+    </ov:Hosts>
+    <ov:Resources>
+      <ov:Images>
+        <ov:Image id="Icon.16x16" resid="Icon.16x16.Url"/>
+      </ov:Images>
+      <ov:Urls>
+        <ov:Url id="TaskPane.Url" DefaultValue="https://localhost:3000/taskpane.html"/>
+        <ov:Url id="Functions.Url" DefaultValue="https://localhost:3000/functions.html"/>
+        <ov:Url id="Icon.16x16.Url" DefaultValue="https://localhost:3000/assets/icon-16.png"/>
+      </ov:Urls>
+      <ov:ShortStrings>
+        <ov:String id="Group.Label" DefaultValue="Kafle"/>
+      </ov:ShortStrings>
+    </ov:Resources>
+  </VersionOverrides>
+</OfficeApp>

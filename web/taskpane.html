@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light"/>
+  <title>Word Tiles</title>
+  <link rel="stylesheet" href="./styles.css"/>
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+</head>
+<body>
+  <div class="app">
+    <div class="header">
+      <button id="btnInsertPlus" class="btn-pill" title="Wstaw wybrany kafel">+</button>
+      <div>
+        <div style="font-weight:600">Word Tiles Add‑in</div>
+        <div style="font-size:12px;color:#6b7280">Kafle z placeholderami Jinja2 · motyw zablokowany</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>dodaj kafle</h2>
+      <div class="pill">
+        <input id="tileName" placeholder="nazwa"/>
+      </div>
+      <div class="pill">
+        <select id="tileType" title="typ">
+          <option value="TEXT">TEKST</option>
+          <option value="CONDITION">POKAŻ/UKRYJ</option>
+          <option value="TABLE">TABELA PRODUKTÓW</option>
+          <option value="IMAGE">OBRAZ</option>
+        </select>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;margin-top:12px;">
+        <button id="btnCreateTile" class="btn-pill" title="utwórz kafel">+</button>
+        <span style="font-size:12px;color:#6b7280;">Kliknij, aby dodać kafel do listy niżej</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>kafle w dokumencie</h2>
+      <div id="phList" class="list">(wczytywanie…)</div>
+    </div>
+
+    <div class="section">
+      <h2>utworzone kafle</h2>
+      <div class="list" id="tiles"></div>
+    </div>
+
+    <div class="footer">
+      Tip: wciśnij <strong>+</strong> (gdy panel ma fokus) lub użyj skrótu <strong>Ctrl+Alt+=</strong> (jeśli używasz manifestu ze skrótem).
+    </div>
+  </div>
+  <script src="./taskpane.js"></script>
+</body>
+</html>

@@ -21,7 +21,6 @@
   </AppDomains>
 
   <Hosts>
-    <!-- Dla Word Task Pane jest 'Document' -->
     <Host Name="Document"/>
   </Hosts>
 
@@ -37,14 +36,14 @@
 
   <Permissions>ReadWriteDocument</Permissions>
 
-  <!-- WAŻNE: używamy przestrzeni nazw ov: -->
-<VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
-                  xsi:type="VersionOverridesV1_0">
+  <!-- Uwaga: cała gałąź w przestrzeni 'ov:' -->
+  <ov:VersionOverrides xsi:type="ov:VersionOverridesV1_0">
+    <ov:Hosts>
+      <ov:Host xsi:type="ov:Document">
+        <ov:DesktopFormFactor>
 
-          <!-- Plik funkcji dla przycisków/skórótów -->
           <ov:FunctionFile resid="Functions.Url"/>
 
-          <!-- Wstążka -->
           <ov:ExtensionPoint xsi:type="PrimaryCommandSurface">
             <ov:Tabs>
               <ov:Tab id="AddNap.Tiles.Tab" label="Tiles">
@@ -71,7 +70,7 @@
             </ov:Tabs>
           </ov:ExtensionPoint>
 
-          <!-- Skrót: jeśli validator marudzi na EQUALS, zmień na CTRL+ALT+I -->
+          <!-- zmień na CTRL+ALT+I jeśli EQUALS sprawia kłopot -->
           <ov:ExtensionPoint xsi:type="KeyboardShortcuts">
             <ov:Shortcut id="AddNap.Tiles.ShortcutInsert"
                          key="CTRL+ALT+EQUALS"
@@ -83,19 +82,14 @@
     </ov:Hosts>
 
     <ov:Resources>
-      <!-- Obrazy do grupy/ikon (resid użyte powyżej) -->
       <ov:Images>
         <ov:Image id="Icon.16x16" resid="Icon.16x16.Url"/>
       </ov:Images>
-
-      <!-- URL-e zasobów -->
       <ov:Urls>
         <ov:Url id="TaskPane.Url"  DefaultValue="https://addnap.github.io/DocxBuilderWord/web/taskpane.html"/>
         <ov:Url id="Functions.Url" DefaultValue="https://addnap.github.io/DocxBuilderWord/web/functions.html"/>
         <ov:Url id="Icon.16x16.Url" DefaultValue="https://addnap.github.io/DocxBuilderWord/web/assets/icon-16.png"/>
       </ov:Urls>
-
-      <!-- (opcjonalne) krótkie stringi -->
       <ov:ShortStrings>
         <ov:String id="Group.Label" DefaultValue="Kafle"/>
       </ov:ShortStrings>

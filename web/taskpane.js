@@ -36,6 +36,11 @@ function renderTiles(){
   root.innerHTML = "";
   TILE_TEMPLATES.forEach(tile => {
     const row = document.createElement("div");
+    row.className = "item tile " + (tile.type ? `type-${tile.type}` : "");
+  const root = document.getElementById("tiles");
+  root.innerHTML = "";
+  TILE_TEMPLATES.forEach(tile => {
+    const row = document.createElement("div");
     row.className = "item";
     const left = document.createElement("div");
     left.style.display="flex"; left.style.alignItems="center"; left.style.gap="8px";
@@ -117,17 +122,23 @@ function createTileFromForm(){
   const name = (document.getElementById("tileName").value || "").trim();
   const type = document.getElementById("tileType").value;
   if (!name && type === "TEXT"){ alert("Podaj nazwę pola."); return; }
+
   let sample = "";
   switch(type){
-    case "TEXT": sample = `{{ ${name} }}`; break;
-    case "CONDITION":
-      const cond = name || "is_visible";
-      sample = `{{ START_${cond} }}\n<treść>\n{{ END_${cond} }}`; break;
-    case "TABLE": sample = "{{ INSERT_PRODUCT_TABLE }}"; break;
-    case "IMAGE": sample = `{{ IMAGE_${name || "logo"} }}`; break;
+    case "TEXT":      sample = `{{ ${name} }}`; break;
+    case "CONDITION": const cond = name || "is_visible";
+                      sample = `{{ START_${cond} }}\n<treść>\n{{ END_${cond} }}`; break;
+    case "TABLE":     sample = "{{ INSERT_PRODUCT_TABLE }}"; break;
+    case "IMAGE":     sample = `{{ IMAGE_${name || "logo"} }}`; break;
   }
+
   const id = `Custom_${Date.now()}`;
-  TILE_TEMPLATES.unshift({ id, label: name ? `${name} (${type})` : type, sample });
+  TILE_TEMPLATES.unshift({
+    id, type,
+    label: name ? `${name} (${type})` : type,
+    sample
+  });
   selectedTileId = id;
   renderTiles();
 }
+

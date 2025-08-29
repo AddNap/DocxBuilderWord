@@ -2,7 +2,6 @@
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
-           xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
            xsi:type="TaskPaneApp">
   <Id>7b9e5d2d-2d3c-4a8c-9f0a-2db9a9e0a002</Id>
   <Version>1.0.0.0</Version>
@@ -35,61 +34,62 @@
 
   <Permissions>ReadWriteDocument</Permissions>
 
-  <!-- 🔧 WAŻNE: prefiks 'ov:' przy VersionOverrides -->
-  <ov:VersionOverrides xsi:type="ov:VersionOverridesV1_0">
-    <ov:Hosts>
-      <ov:Host xsi:type="ov:Document">
-        <ov:DesktopFormFactor>
-          <ov:FunctionFile resid="Functions.Url"/>
+  <!-- Uwaga: tu ustawiamy DOMYŚLNĄ przestrzeń nazw dla VersionOverrides -->
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+                    xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Document">
+        <DesktopFormFactor>
+          <FunctionFile resid="Functions.Url"/>
 
-          <ov:ExtensionPoint xsi:type="PrimaryCommandSurface">
-            <ov:Tabs>
-              <ov:Tab id="AddNap.Tiles.Tab" label="Tiles">
-                <ov:Group id="AddNap.Tiles.Group" label="Kafle" icon="Icon.16x16">
-                  <ov:Control xsi:type="Button" id="AddNap.Tiles.ShowPane"
-                              label="Otwórz panel"
-                              tooltip="Pokaż panel kafli"
-                              icon="Icon.16x16">
-                    <ov:Action xsi:type="ShowTaskpane">
-                      <ov:SourceLocation resid="TaskPane.Url"/>
-                    </ov:Action>
-                  </ov:Control>
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <Tabs>
+              <Tab id="AddNap.Tiles.Tab" label="Tiles">
+                <Group id="AddNap.Tiles.Group" label="Kafle" icon="Icon.16x16">
+                  <Control xsi:type="Button" id="AddNap.Tiles.ShowPane"
+                           label="Otwórz panel"
+                           tooltip="Pokaż panel kafli"
+                           icon="Icon.16x16">
+                    <Action xsi:type="ShowTaskpane">
+                      <SourceLocation resid="TaskPane.Url"/>
+                    </Action>
+                  </Control>
 
-                  <ov:Control xsi:type="Button" id="AddNap.Tiles.Insert"
-                              label="Wstaw kafel"
-                              tooltip="Wstaw wybrany kafel w kursor"
-                              icon="Icon.16x16">
-                    <ov:Action xsi:type="ExecuteFunction">
-                      <ov:FunctionName>insertTileAtSelection</ov:FunctionName>
-                    </ov:Action>
-                  </ov:Control>
-                </ov:Group>
-              </ov:Tab>
-            </ov:Tabs>
-          </ov:ExtensionPoint>
+                  <Control xsi:type="Button" id="AddNap.Tiles.Insert"
+                           label="Wstaw kafel"
+                           tooltip="Wstaw wybrany kafel w kursor"
+                           icon="Icon.16x16">
+                    <Action xsi:type="ExecuteFunction">
+                      <FunctionName>insertTileAtSelection</FunctionName>
+                    </Action>
+                  </Control>
+                </Group>
+              </Tab>
+            </Tabs>
+          </ExtensionPoint>
 
-          <!-- Skrót klawiaturowy; jeśli validator marudzi na EQUALS, użyj CTRL+ALT+I -->
-          <ov:ExtensionPoint xsi:type="KeyboardShortcuts">
-            <ov:Shortcut id="AddNap.Tiles.ShortcutInsert"
-                         key="CTRL+ALT+EQUALS"
-                         action="AddNap.Tiles.Insert"/>
-          </ov:ExtensionPoint>
-        </ov:DesktopFormFactor>
-      </ov:Host>
-    </ov:Hosts>
+          <!-- Jeśli validator marudzi na EQUALS, zmień na CTRL+ALT+I -->
+          <ExtensionPoint xsi:type="KeyboardShortcuts">
+            <Shortcut id="AddNap.Tiles.ShortcutInsert"
+                      key="CTRL+ALT+EQUALS"
+                      action="AddNap.Tiles.Insert"/>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
 
-    <ov:Resources>
-      <ov:Images>
-        <ov:Image id="Icon.16x16" resid="Icon.16x16.Url"/>
-      </ov:Images>
-      <ov:Urls>
-        <ov:Url id="TaskPane.Url"  DefaultValue="https://addnap.github.io/DocxBuilderWord/web/taskpane.html"/>
-        <ov:Url id="Functions.Url" DefaultValue="https://addnap.github.io/DocxBuilderWord/web/functions.html"/>
-        <ov:Url id="Icon.16x16.Url" DefaultValue="https://addnap.github.io/DocxBuilderWord/web/assets/icon-16.png"/>
-      </ov:Urls>
-      <ov:ShortStrings>
-        <ov:String id="Group.Label" DefaultValue="Kafle"/>
-      </ov:ShortStrings>
-    </ov:Resources>
-  </ov:VersionOverrides>
+    <Resources>
+      <Images>
+        <Image id="Icon.16x16" resid="Icon.16x16.Url"/>
+      </Images>
+      <Urls>
+        <Url id="TaskPane.Url"  DefaultValue="https://addnap.github.io/DocxBuilderWord/web/taskpane.html"/>
+        <Url id="Functions.Url" DefaultValue="https://addnap.github.io/DocxBuilderWord/web/functions.html"/>
+        <Url id="Icon.16x16.Url" DefaultValue="https://addnap.github.io/DocxBuilderWord/web/assets/icon-16.png"/>
+      </Urls>
+      <ShortStrings>
+        <String id="Group.Label" DefaultValue="Kafle"/>
+      </ShortStrings>
+    </Resources>
+  </VersionOverrides>
 </OfficeApp>

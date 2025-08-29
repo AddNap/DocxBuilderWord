@@ -10,22 +10,29 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Word Tiles Add-in"/>
   <Description DefaultValue="Tiles with Jinja-style placeholders"/>
-  <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-80.png"/>
-  <SupportUrl DefaultValue="https://localhost:3000/support"/>
+
+  <!-- Ikony i pliki hostowane na GH Pages -->
+  <IconUrl DefaultValue="https://addnap.github.io/DocxBuilderWord/web/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://addnap.github.io/DocxBuilderWord/web/assets/icon-80.png"/>
+  <SupportUrl DefaultValue="https://addnap.github.io/DocxBuilderWord/"/>
+
   <AppDomains>
-    <AppDomain>https://localhost:3000</AppDomain>
+    <AppDomain>https://addnap.github.io</AppDomain>
   </AppDomains>
+
   <Hosts>
     <Host Name="Document"/>
   </Hosts>
+
   <Requirements>
     <Sets DefaultMinVersion="1.1">
       <Set Name="WordApi" MinVersion="1.3"/>
     </Sets>
   </Requirements>
+
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://localhost:3000/taskpane.html"/>
+    <SourceLocation DefaultValue="https://addnap.github.io/DocxBuilderWord/web/taskpane.html"/>
   </DefaultSettings>
+
   <Permissions>ReadWriteDocument</Permissions>
 </OfficeApp>

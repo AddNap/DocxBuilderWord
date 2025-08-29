@@ -38,10 +38,8 @@
   <Permissions>ReadWriteDocument</Permissions>
 
   <!-- WAŻNE: używamy przestrzeni nazw ov: -->
-  <ov:VersionOverrides xsi:type="ov:VersionOverridesV1_0">
-    <ov:Hosts>
-      <ov:Host xsi:type="ov:Document">
-        <ov:DesktopFormFactor>
+<VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+                  xsi:type="VersionOverridesV1_0">
 
           <!-- Plik funkcji dla przycisków/skórótów -->
           <ov:FunctionFile resid="Functions.Url"/>
